@@ -8,6 +8,6 @@ function getSteps (connection) {
   return connection('steps').select()
 }
 
-function getRecipe (id, connection) {
+function getRecipe (connection) {
   return connection('recipe').where('id', id)
 }

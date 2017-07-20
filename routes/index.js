@@ -13,8 +13,12 @@ router.get('/', function (req, res) {
     })
 })
 
-router.get('/recipe/:id', function (req, res) {
-  res.render('recipe', {id: req.params.id})
+router.get('/recipe', function (req, res) {
+  db.getRecipe(req.app.get('connection'))
+    .then(function(recipe) {
+      res.render('recipe', recipe)
+
+    })
 })
 
 module.exports = router
