@@ -14,11 +14,17 @@ router.get('/', function (req, res) {
 })
 
 router.get('/recipe', function (req, res) {
-  db.getRecipe(req.app.get('connection'))
-    .then(function(recipe) {
-      res.render('recipe', recipe)
+  // db.getRecipe(req.app.get('connection'))
+  //   .then(function(recipe) {
+  //     res.render('recipe', recipe)
 
-    })
+  //   })
+
+  res.render('recipe', {steps: [
+    {step_name: "Prep", items: [{item_name: "meat patty"}]},
+    {step_name: "Cook", items: [{item_name: "meat patty"}, {item_name: "meat patty"}]},
+    {step_name: "Plate", items: [{item_name: "meat patty"}]}
+  ],})
 })
 
 module.exports = router

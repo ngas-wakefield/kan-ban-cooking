@@ -1,0 +1,28 @@
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  min-height: 60px;
+}
+
+.step {
+  min-width: 320px;
+  background-color: pink;
+}
+
+.item {
+  min-height: 360px;
+  background-color: green;
+}
