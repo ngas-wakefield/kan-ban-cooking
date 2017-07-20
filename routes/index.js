@@ -13,4 +13,8 @@ router.get('/', function (req, res) {
     })
 })
 
+router.get('/recipe/:id', function (req, res) {
+  res.render('recipe', {id: req.params.id})
+})
+
 module.exports = router
