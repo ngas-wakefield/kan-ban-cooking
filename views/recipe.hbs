@@ -15,20 +15,38 @@
     <div class="row">
       {{#each steps}}
       <div class="column step">
-        <div class="header">
-          {{step_name}}
-        </div>
+
+        <div class="column ">
+          <div class="header">
+            {{step_name}}
+          </div>
 
 
-        {{#each items}}
-        <div class="item">
-         {{item_name}} 
+          {{#each items}}
+          <div class="item">
+           {{item_name}}
+          </div>
+          {{/each}}
+
+
         </div>
-        {{/each}}
+
+      <form class="" action="/recipe/:id/move" method="post">
+        <select class="">
+          {{#each items}}
+            <option class="item" value="">{{item_name}}</option>
       </div>
-      {{/each}}
+          {{/each}}
+          <input type="submit" name="" value="Move">
+       </select>
+      </form>
     </div>
+
+
+      {{/each}}
+
   </div>
+  <!-- </div> -->
 
 </body>
 

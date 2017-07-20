@@ -20,11 +20,20 @@ router.get('/recipe', function (req, res) {
 
   //   })
 
+
   res.render('recipe', {steps: [
-    {step_name: "Prep", items: [{item_name: "meat patty"}]},
-    {step_name: "Cook", items: [{item_name: "meat patty"}, {item_name: "meat patty"}]},
-    {step_name: "Plate", items: [{item_name: "meat patty"}]}
-  ],})
+    {step_name: "Prep", items: [
+      {item_name: "meat patty"},
+      {item_name: "veges"},
+      {item_name: "patty meat"},
+      {item_name: "sauce"}
+    ]},
+    {step_name: "Cook", items: [
+    {item_name: "meat patty"}, {item_name: "meat patty"}
+    ]},
+    {step_name: "Plate", items: [{item_name: "meat patty"}
+    ]}
+    ],})
 })
 
 module.exports = router
