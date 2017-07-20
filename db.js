@@ -1,13 +1,13 @@
 
 module.exports = {
-  getUser: getUser,
-  getUsers: getUsers
+  getSteps: getSteps,
+  getRecipe: getRecipe
 }
 
-function getUsers (connection) {
-  return connection('users').select()
+function getSteps (connection) {
+  return connection('steps').select()
 }
 
-function getUser (id, connection) {
-  return connection('users').where('id', id)
+function getRecipe (id, connection) {
+  return connection('recipe').where('id', id)
 }
