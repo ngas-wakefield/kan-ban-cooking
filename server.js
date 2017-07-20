@@ -16,7 +16,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Routes
-
+app.use(express.static('public'))
 app.use('/', index)
 
 module.exports = (connection) => {
