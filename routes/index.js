@@ -6,7 +6,9 @@ var db = require('../db')
 router.get('/', function (req, res) {
   db.getSteps(req.app.get('connection'))
     .then(function () {
-      res.render('index', { steps: steps })
+      res.render('index', {
+        steps: steps
+      })
     })
     .catch(function (err) {
       res.status(500).send('DATABASE ERROR: ' + err.message)
@@ -14,17 +16,31 @@ router.get('/', function (req, res) {
 })
 
 router.get('/recipe', function (req, res) {
-  // db.getRecipe(req.app.get('connection'))
-  //   .then(function(recipe) {
-  //     res.render('recipe', recipe)
+  var data = {}
+  var connection = req.app.get('connection')
+  db.getRecipes(connection)
+    .then(function (recipes) {
+      var data = recipes.reduce(function (data, recipe) {
+        var step = data.steps.find(function (step) {
+          return step.step_name == recipe.step_name
+        })
 
-  //   })
+        if (!step) {
+          step = {
+            step_name: recipe.step_name,
+            recipes: []
+          }
+          data.steps.push(step)
+        }
 
-  res.render('recipe', {steps: [
-    {step_name: "Prep", items: [{item_name: "meat patty"}]},
-    {step_name: "Cook", items: [{item_name: "meat patty"}, {item_name: "meat patty"}]},
-    {step_name: "Plate", items: [{item_name: "meat patty"}]}
-  ],})
+        step.recipes.push(recipe)
+        return data
+      }, {
+        steps: []
+      })
+
+      res.render('recipe', data)
+    })
 })
 
 module.exports = router
