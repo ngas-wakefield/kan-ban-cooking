@@ -18,28 +18,24 @@ router.get('/', function (req, res) {
 router.get('/recipe', function (req, res) {
   var data = {}
   var connection = req.app.get('connection')
-  db.getRecipes(connection)
-    .then(function (recipes) {
-      var data = recipes.reduce(function (data, recipe) {
-        var step = data.steps.find(function (step) {
-          return step.step_name == recipe.step_name
+  db.getSteps(connection)
+    .then(function (steps) {
+      data.steps = steps
+
+      db.getRecipes(connection)
+        .then(function (recipes) {
+          data = recipes.reduce(function (data, recipe) {
+            var step = data.steps.find(function (step) {
+              return step.name == recipe.step_name
+            })
+
+            if (!step.recipes) step.recipes = []
+            step.recipes.push(recipe)
+            return data
+          }, data)
+
+          res.render('recipe', data)
         })
-
-        if (!step) {
-          step = {
-            step_name: recipe.step_name,
-            recipes: []
-          }
-          data.steps.push(step)
-        }
-
-        step.recipes.push(recipe)
-        return data
-      }, {
-        steps: []
-      })
-
-      res.render('recipe', data)
     })
 })
 
