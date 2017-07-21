@@ -22,17 +22,19 @@ db.getRecipe(req.app.get('connection'), req.body.id)
 })
 
 router.get('/recipe', function (req, res) {
-  // db.getRecipe(req.app.get('connection'))
-  //   .then(function(recipe) {
-  //     res.render('recipe', recipe)
-
-  //   })
-
   res.render('recipe', {steps: [
-    {step_name: "Prep", items: [{item_name: "meat patty"}]},
-    {step_name: "Cook", items: [{item_name: "meat patty"}, {item_name: "meat patty"}]},
-    {step_name: "Plate", items: [{item_name: "meat patty"}]}
-  ],})
+    {step_name: "Prep", items: [
+      {item_name: "meat patty"},
+      {item_name: "veges"},
+      {item_name: "patty meat"},
+      {item_name: "sauce"}
+    ]},
+    {step_name: "Cook", items: [
+    {item_name: "Chicken"}, {item_name: "bacon"}
+    ]},
+    {step_name: "Plate", items: [{item_name: "Burger Buns"}
+    ]}
+    ],})
 })
 
 module.exports = router
