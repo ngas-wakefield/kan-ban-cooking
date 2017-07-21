@@ -21,22 +21,22 @@
           <div class="header">
           <p>{{name}}</p>
           </div>
-
+          <form class="" action="/recipe/move" method="post">
+            <select name="recipe_id" class="">
+            {{#each recipes}}
+              <option class="item" value="{{id}}">{{recipe_name}}</option>
+            {{/each}}
+            <input type="submit" name="" value="Move">
+              </select>
+          </form>
           {{#each recipes}}
           <div class="item">
             <img src="{{img_url}}" alt="{{recipe_name}}">
-            {{recipe_name}}
+          <p>{{recipe_name}}</p>
           </div>
           {{/each}}
         </div>
-        <form class="" action="/recipe/move" method="post">
-          <select name="recipe_id" class="">
-          {{#each recipes}}
-            <option class="item" value="{{id}}">{{recipe_name}}</option>
-          {{/each}}
-          <input type="submit" name="" value="Move">
-            </select>
-        </form>
+
       </div>
       {{/each}}
     </div>
