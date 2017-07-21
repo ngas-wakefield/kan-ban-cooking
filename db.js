@@ -4,6 +4,7 @@ module.exports = {
   getRecipe: getRecipe,
   getRecipeInAStep:getRecipeInAStep,
   getRecipes: getRecipes,
+  incrementStep: incrementStep
 }
 
 function getSteps (connection) {
@@ -22,4 +23,14 @@ function getRecipes(connection) {
   return connection('recipe')
   .join('steps', 'recipe.steps_id', '=', 'steps.id')
   .select('recipe.*', 'recipe.name as recipe_name', 'steps.name as step_name')
+}
+
+function incrementStep () {
+    return connection ('recipe').where('id', id)
+    .then(function (recipe){
+    var updateStepId = recipe.steps_id+1
+    connection ('recipe').where('id', id).update({steps_id: updateStepId})
+    .then()
+  })
+
 }

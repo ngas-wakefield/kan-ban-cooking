@@ -43,4 +43,12 @@ router.get('/recipe', function (req, res) {
     })
 })
 
+router.post('/recipe/move', function (req, res) {
+  db.getRecipe(req.app.get('connection'), req.body.id)
+    .then(function (item) {
+      item.steps_id
+    })
+
+})
+
 module.exports = router
