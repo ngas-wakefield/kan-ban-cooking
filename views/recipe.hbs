@@ -26,22 +26,24 @@
             {{recipe_name}}
           </div>
           {{/each}}
-
-          <form class="" action="/recipe/move" method="post">
-            <select class="">
+        </div>
+        <form class="" action="/recipe/move" method="post">
+          <select name="recipe_id" class="">
           {{#each recipes}}
-            <option class="item" value="">{{recipe_name}}</option>
+            <option class="item" value="{{id}}">{{recipe_name}}</option>
           {{/each}}
           <input type="submit" name="" value="Move">
             </select>
-          </form>
-        </div>
+        </form>
       </div>
-
-
       {{/each}}
-
     </div>
+  </div>
+
+
+
+
+  </div>
 
 </body>
 
