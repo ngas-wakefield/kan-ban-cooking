@@ -14,39 +14,36 @@
 
     <div class="row">
       {{#each steps}}
-      <div class="column step">
+        <div class="column step">
 
-        <div class="column ">
-          <div class="header">
-            {{step_name}}
+          <div class="column ">
+            <div class="header">
+              {{step_name}}
+            </div>
+
+            {{#each recipes}}
+              <div class="item">
+                {{recipe_name}}
+              </div>
+            {{/each}}
           </div>
-
-
-          {{#each items}}
-          <div class="item">
-           {{item_name}}
-          </div>
+        <form class="" action="/recipe/move" method="post">
+          <select name="recipe_id" class="">
+          {{#each recipes}}
+            <option class="item" value="{{id}}">{{recipe_name}}</option>
           {{/each}}
-
-
-        </div>
-
-      <form class="" action="/recipe/move" method="post">
-        <select name="recipe_id"class="">
-          {{#each items}}
-            <option class="item" value="1">{{item_name}}</option>
+          <input type="submit" name="" value="Move">
+            </select>
+        </form>
       </div>
-          {{/each}}
-        </select>
-       <input type="submit" name="" value="Move">
-      </form>
-    </div>
-
-
       {{/each}}
+    </div>
+  </div>
+
+
+
 
   </div>
-  <!-- </div> -->
 
 </body>
 
