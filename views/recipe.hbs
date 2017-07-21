@@ -32,13 +32,13 @@
         </div>
 
       <form class="" action="/recipe/move" method="post">
-        <select class="">
+        <select name="recipe_id"class="">
           {{#each items}}
-            <option class="item" value="">{{item_name}}</option>
+            <option class="item" value="1">{{item_name}}</option>
       </div>
           {{/each}}
-          <input type="submit" name="" value="Move">
-       </select>
+        </select>
+       <input type="submit" name="" value="Move">
       </form>
     </div>
 

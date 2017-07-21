@@ -14,10 +14,11 @@ router.get('/', function (req, res) {
 })
 
 router.post('/recipe/move', function (req, res) {
-db.getRecipe(req.app.get('connection'), req.body.id)
-    .then(function (item){
-     item.steps_id
-})
+  db.incrementStep(req.body.recipe_id, req.app.get('connection'))
+    .then(function (){
+      console.log(req.body.recipe_id);
+      res.redirect('/recipe')
+  })
 
 })
 
