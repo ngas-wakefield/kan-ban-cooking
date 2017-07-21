@@ -5,9 +5,6 @@ var db = require('../db')
 
 router.get('/', function(req, res) {
   res.redirect('/recipe')
-    .catch(function(err) {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
 })
 
 
